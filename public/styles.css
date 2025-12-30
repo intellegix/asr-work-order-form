@@ -1,0 +1,646 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.form-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-secondary {
+  background-color: #6b7280;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+.btn-photo {
+  background-color: #059669;
+  color: white;
+}
+
+.btn-photo:hover {
+  background-color: #047857;
+}
+
+.btn-capture {
+  background-color: #dc2626;
+  color: white;
+  padding: 15px 40px;
+  font-size: 16px;
+}
+
+.work-order {
+  background-color: white;
+  border: 2px solid #1e88e5;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #1e88e5;
+}
+
+.company-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo-icon {
+  font-size: 40px;
+  color: #1e88e5;
+}
+
+.logo-text {
+  font-size: 48px;
+  font-weight: bold;
+  color: #1e88e5;
+}
+
+.company-details {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.company-name {
+  font-weight: bold;
+  color: #1e88e5;
+  font-size: 12px;
+}
+
+.order-info {
+  text-align: right;
+}
+
+.order-info h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.order-fields .field-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.order-fields label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.order-fields input {
+  width: 180px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+/* Info Sections */
+.info-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 15px;
+}
+
+.billing-section, .jobsite-section {
+  border: 1px solid #1e88e5;
+}
+
+.section-header {
+  background-color: #1e88e5;
+  color: white;
+  padding: 6px 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.section-content {
+  padding: 10px;
+}
+
+.section-content .field-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.section-content label {
+  width: 80px;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.section-content input {
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 11px;
+}
+
+/* Employee Schedule */
+.employee-schedule {
+  margin-bottom: 15px;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #1e88e5;
+}
+
+.schedule-table th {
+  background-color: #1e88e5;
+  color: white;
+  padding: 6px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #1e88e5;
+}
+
+.schedule-table td {
+  border: 1px solid #ccc;
+  padding: 4px;
+}
+
+.schedule-table .date-col {
+  width: 80px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.schedule-table .employee-col {
+  width: 150px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.week-date-input {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  text-align: center;
+}
+
+.employee-name {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  font-size: 11px;
+}
+
+.hours-input {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  text-align: center;
+  font-size: 11px;
+}
+
+/* Description Section */
+.description-section {
+  margin-bottom: 15px;
+}
+
+.section-header-blue {
+  background-color: #1e88e5;
+  color: white;
+  padding: 6px 10px;
+  font-weight: bold;
+}
+
+.description-section textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding: 10px;
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Materials and Costs */
+.materials-costs-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+  margin-bottom: 15px;
+}
+
+.materials-table-container {
+  border: 1px solid #1e88e5;
+}
+
+.materials-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.materials-table th {
+  background-color: #1e88e5;
+  color: white;
+  padding: 6px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #1e88e5;
+}
+
+.materials-table td {
+  border: 1px solid #ccc;
+  padding: 2px;
+}
+
+.materials-table .material-col {
+  width: 50%;
+}
+
+.materials-table .qty-col, .materials-table .price-col, .materials-table .total-col {
+  width: 16.67%;
+  text-align: center;
+}
+
+.material-input, .qty-input, .price-input, .total-input {
+  width: 100%;
+  padding: 4px;
+  border: none;
+  font-size: 11px;
+}
+
+.qty-input, .price-input, .total-input {
+  text-align: center;
+}
+
+.costs-summary {
+  border: 1px solid #1e88e5;
+  border-left: none;
+}
+
+.cost-row {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.cost-row:last-child {
+  border-bottom: none;
+}
+
+.cost-row label {
+  width: 50%;
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 11px;
+  background-color: #e3f2fd;
+  border-right: 1px solid #ccc;
+}
+
+.cost-row input {
+  width: 50%;
+  padding: 4px;
+  border: none;
+  text-align: right;
+  font-size: 11px;
+}
+
+.cost-row.total-row label {
+  background-color: #bbdefb;
+}
+
+/* Photo Section */
+.photo-section {
+  margin-bottom: 15px;
+}
+
+.photo-controls {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-top: none;
+  justify-content: center;
+}
+
+.photo-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-top: none;
+  min-height: 50px;
+}
+
+.photo-preview:empty::before {
+  content: 'No photos attached';
+  color: #999;
+  font-style: italic;
+}
+
+.photo-item {
+  position: relative;
+  width: 150px;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.photo-item .remove-photo {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Camera Modal */
+.camera-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.camera-container {
+  text-align: center;
+}
+
+.camera-container video {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 8px;
+}
+
+.camera-controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Disclaimer */
+.disclaimer {
+  border: 1px solid #333;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.disclaimer p {
+  margin-bottom: 5px;
+}
+
+/* Signature Section */
+.signature-section {
+  margin-bottom: 15px;
+}
+
+.signature-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.signature-field {
+  flex: 2;
+}
+
+.signature-field label, .date-field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.signature-pad-container {
+  position: relative;
+}
+
+.signature-pad {
+  border: 1px solid #333;
+  border-radius: 4px;
+  width: 100%;
+  height: 80px;
+  cursor: crosshair;
+  background-color: #fafafa;
+}
+
+.btn-clear-sig {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 2px 8px;
+  font-size: 10px;
+  background-color: #f3f4f6;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.date-field {
+  flex: 1;
+}
+
+.date-field input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+/* Office Section */
+.office-section {
+  border: 1px solid #333;
+}
+
+.office-header {
+  background-color: #e3f2fd;
+  padding: 6px 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+}
+
+.office-fields {
+  padding: 10px;
+}
+
+.office-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.office-row:last-child {
+  margin-bottom: 0;
+}
+
+.office-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.office-field label {
+  font-weight: bold;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.office-field input {
+  flex: 1;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 11px;
+}
+
+/* Print/PDF Styles */
+@media print {
+  body {
+    background-color: white;
+    padding: 0;
+  }
+
+  .form-controls {
+    display: none !important;
+  }
+
+  .container {
+    max-width: none;
+  }
+
+  .work-order {
+    box-shadow: none;
+    border: 2px solid #1e88e5;
+  }
+
+  .photo-controls {
+    display: none !important;
+  }
+
+  .btn-clear-sig {
+    display: none !important;
+  }
+
+  .remove-photo {
+    display: none !important;
+  }
+
+  input, textarea {
+    border: none !important;
+    background-color: transparent !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .order-info {
+    text-align: left;
+  }
+
+  .order-fields .field-row {
+    justify-content: flex-start;
+  }
+
+  .info-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .materials-costs-section {
+    grid-template-columns: 1fr;
+  }
+
+  .costs-summary {
+    border-left: 1px solid #1e88e5;
+  }
+
+  .signature-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .office-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

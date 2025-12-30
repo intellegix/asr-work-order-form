@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASR Work Order Form</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="form-controls">
+      <button type="button" class="btn btn-primary" onclick="generatePDF()">Download PDF</button>
+      <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear Form</button>
+    </div>
+
+    <div id="work-order-form" class="work-order">
+      <!-- Header -->
+      <div class="header">
+        <div class="company-info">
+          <div class="logo">
+            <div class="logo-icon">&#9679;</div>
+            <span class="logo-text">ASR</span>
+          </div>
+          <div class="company-details">
+            <div class="company-name">Surface Roofing and Waterproofing Inc.</div>
+            <div>2030 Gillespie Way #106,</div>
+            <div>El Cajon, California 92020</div>
+            <div>Phone: 760.567.0267</div>
+            <div>License: B/C39/C13/C17 729505</div>
+          </div>
+        </div>
+        <div class="order-info">
+          <h1>Work Order</h1>
+          <div class="order-fields">
+            <div class="field-row">
+              <label>Date Ordered:</label>
+              <input type="date" name="dateOrdered" id="dateOrdered">
+            </div>
+            <div class="field-row">
+              <label>Taken By:</label>
+              <input type="text" name="takenBy" id="takenBy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Billing and Job Site Information -->
+      <div class="info-sections">
+        <div class="billing-section">
+          <div class="section-header">Billing Information</div>
+          <div class="section-content">
+            <div class="field-row">
+              <label>Association:</label>
+              <input type="text" name="association" id="association">
+            </div>
+            <div class="field-row">
+              <label>Bill To:</label>
+              <input type="text" name="billTo" id="billTo">
+            </div>
+            <div class="field-row">
+              <label>Address:</label>
+              <input type="text" name="billingAddress" id="billingAddress">
+            </div>
+            <div class="field-row">
+              <label>City, Zip:</label>
+              <input type="text" name="billingCityZip" id="billingCityZip">
+            </div>
+            <div class="field-row">
+              <label>Contact:</label>
+              <input type="text" name="billingContact" id="billingContact">
+            </div>
+            <div class="field-row">
+              <label>Phone:</label>
+              <input type="tel" name="billingPhone" id="billingPhone">
+            </div>
+            <div class="field-row">
+              <label>Cell:</label>
+              <input type="tel" name="billingCell" id="billingCell">
+            </div>
+            <div class="field-row">
+              <label>Fax:</label>
+              <input type="tel" name="billingFax" id="billingFax">
+            </div>
+          </div>
+        </div>
+
+        <div class="jobsite-section">
+          <div class="section-header">Job Site Information</div>
+          <div class="section-content">
+            <div class="field-row">
+              <label>Foreman:</label>
+              <input type="text" name="foreman" id="foreman">
+            </div>
+            <div class="field-row">
+              <label>Name:</label>
+              <input type="text" name="jobName" id="jobName">
+            </div>
+            <div class="field-row">
+              <label>Job Address:</label>
+              <input type="text" name="jobAddress" id="jobAddress">
+            </div>
+            <div class="field-row">
+              <label>City:</label>
+              <input type="text" name="jobCity" id="jobCity">
+            </div>
+            <div class="field-row">
+              <label>Phone:</label>
+              <input type="tel" name="jobPhone" id="jobPhone">
+            </div>
+            <div class="field-row">
+              <label>Cell:</label>
+              <input type="tel" name="jobCell" id="jobCell">
+            </div>
+            <div class="field-row">
+              <label>Comments:</label>
+              <input type="text" name="jobComments" id="jobComments">
+            </div>
+            <div class="field-row">
+              <label>Schedule Date:</label>
+              <input type="date" name="scheduleDate" id="scheduleDate">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employee Schedule -->
+      <div class="employee-schedule">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="date-col">Date:</th>
+              <th colspan="6">
+                <input type="date" name="weekStartDate" id="weekStartDate" class="week-date-input">
+              </th>
+            </tr>
+            <tr>
+              <th class="employee-col">Employee:</th>
+              <th>Mon</th>
+              <th>Tues</th>
+              <th>Wed</th>
+              <th>Thurs</th>
+              <th>Fri</th>
+              <th>Sat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="employee1" class="employee-name"></td>
+              <td><input type="text" name="emp1Mon" class="hours-input"></td>
+              <td><input type="text" name="emp1Tue" class="hours-input"></td>
+              <td><input type="text" name="emp1Wed" class="hours-input"></td>
+              <td><input type="text" name="emp1Thu" class="hours-input"></td>
+              <td><input type="text" name="emp1Fri" class="hours-input"></td>
+              <td><input type="text" name="emp1Sat" class="hours-input"></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="employee2" class="employee-name"></td>
+              <td><input type="text" name="emp2Mon" class="hours-input"></td>
+              <td><input type="text" name="emp2Tue" class="hours-input"></td>
+              <td><input type="text" name="emp2Wed" class="hours-input"></td>
+              <td><input type="text" name="emp2Thu" class="hours-input"></td>
+              <td><input type="text" name="emp2Fri" class="hours-input"></td>
+              <td><input type="text" name="emp2Sat" class="hours-input"></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="employee3" class="employee-name"></td>
+              <td><input type="text" name="emp3Mon" class="hours-input"></td>
+              <td><input type="text" name="emp3Tue" class="hours-input"></td>
+              <td><input type="text" name="emp3Wed" class="hours-input"></td>
+              <td><input type="text" name="emp3Thu" class="hours-input"></td>
+              <td><input type="text" name="emp3Fri" class="hours-input"></td>
+              <td><input type="text" name="emp3Sat" class="hours-input"></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="employee4" class="employee-name"></td>
+              <td><input type="text" name="emp4Mon" class="hours-input"></td>
+              <td><input type="text" name="emp4Tue" class="hours-input"></td>
+              <td><input type="text" name="emp4Wed" class="hours-input"></td>
+              <td><input type="text" name="emp4Thu" class="hours-input"></td>
+              <td><input type="text" name="emp4Fri" class="hours-input"></td>
+              <td><input type="text" name="emp4Sat" class="hours-input"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Description of Work -->
+      <div class="description-section">
+        <div class="section-header-blue">Description of Work:</div>
+        <textarea name="descriptionOfWork" id="descriptionOfWork" rows="6"></textarea>
+      </div>
+
+      <!-- Materials and Costs -->
+      <div class="materials-costs-section">
+        <div class="materials-table-container">
+          <table class="materials-table">
+            <thead>
+              <tr>
+                <th class="material-col">Material Used:</th>
+                <th class="qty-col">Qty</th>
+                <th class="price-col">Price</th>
+                <th class="total-col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="material1" class="material-input"></td>
+                <td><input type="number" name="qty1" class="qty-input" onchange="calculateMaterialTotal(1)"></td>
+                <td><input type="number" name="price1" class="price-input" step="0.01" onchange="calculateMaterialTotal(1)"></td>
+                <td><input type="text" name="total1" class="total-input" readonly></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="material2" class="material-input"></td>
+                <td><input type="number" name="qty2" class="qty-input" onchange="calculateMaterialTotal(2)"></td>
+                <td><input type="number" name="price2" class="price-input" step="0.01" onchange="calculateMaterialTotal(2)"></td>
+                <td><input type="text" name="total2" class="total-input" readonly></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="material3" class="material-input"></td>
+                <td><input type="number" name="qty3" class="qty-input" onchange="calculateMaterialTotal(3)"></td>
+                <td><input type="number" name="price3" class="price-input" step="0.01" onchange="calculateMaterialTotal(3)"></td>
+                <td><input type="text" name="total3" class="total-input" readonly></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="material4" class="material-input"></td>
+                <td><input type="number" name="qty4" class="qty-input" onchange="calculateMaterialTotal(4)"></td>
+                <td><input type="number" name="price4" class="price-input" step="0.01" onchange="calculateMaterialTotal(4)"></td>
+                <td><input type="text" name="total4" class="total-input" readonly></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="material5" class="material-input"></td>
+                <td><input type="number" name="qty5" class="qty-input" onchange="calculateMaterialTotal(5)"></td>
+                <td><input type="number" name="price5" class="price-input" step="0.01" onchange="calculateMaterialTotal(5)"></td>
+                <td><input type="text" name="total5" class="total-input" readonly></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="material6" class="material-input"></td>
+                <td><input type="number" name="qty6" class="qty-input" onchange="calculateMaterialTotal(6)"></td>
+                <td><input type="number" name="price6" class="price-input" step="0.01" onchange="calculateMaterialTotal(6)"></td>
+                <td><input type="text" name="total6" class="total-input" readonly></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="costs-summary">
+          <div class="cost-row">
+            <label>Total Material:</label>
+            <input type="text" name="totalMaterial" id="totalMaterial" readonly>
+          </div>
+          <div class="cost-row">
+            <label>Labor:</label>
+            <input type="number" name="labor" id="labor" step="0.01" onchange="calculateTotals()">
+          </div>
+          <div class="cost-row">
+            <label>W/C Ins.:</label>
+            <input type="number" name="wcIns" id="wcIns" step="0.01" onchange="calculateTotals()">
+          </div>
+          <div class="cost-row">
+            <label>Tear/Off-Dump:</label>
+            <input type="number" name="tearOffDump" id="tearOffDump" step="0.01" onchange="calculateTotals()">
+          </div>
+          <div class="cost-row">
+            <label>% Commission:</label>
+            <input type="number" name="commission" id="commission" step="0.01" onchange="calculateTotals()">
+          </div>
+          <div class="cost-row total-row">
+            <label>Total Cost:</label>
+            <input type="text" name="totalCost" id="totalCost" readonly>
+          </div>
+          <div class="cost-row">
+            <label>Contract Price:</label>
+            <input type="number" name="contractPrice" id="contractPrice" step="0.01" onchange="calculateTotals()">
+          </div>
+          <div class="cost-row">
+            <label>% Gross Profit:</label>
+            <input type="text" name="grossProfit" id="grossProfit" readonly>
+          </div>
+          <div class="cost-row">
+            <label>% Overhead:</label>
+            <input type="number" name="overhead" id="overhead" step="0.01" onchange="calculateTotals()">
+          </div>
+          <div class="cost-row">
+            <label>Net Profit:</label>
+            <input type="text" name="netProfit" id="netProfit" readonly>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo Attachments -->
+      <div class="photo-section">
+        <div class="section-header-blue">Photo Attachments:</div>
+        <div class="photo-controls">
+          <button type="button" class="btn btn-photo" onclick="document.getElementById('photoInput').click()">
+            Upload Photos
+          </button>
+          <button type="button" class="btn btn-photo" onclick="openCamera()">
+            Take Photo
+          </button>
+          <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotoUpload(event)" style="display: none;">
+        </div>
+        <div id="photoPreview" class="photo-preview"></div>
+
+        <!-- Hidden camera modal -->
+        <div id="cameraModal" class="camera-modal" style="display: none;">
+          <div class="camera-container">
+            <video id="cameraVideo" autoplay playsinline></video>
+            <div class="camera-controls">
+              <button type="button" class="btn btn-capture" onclick="capturePhoto()">Capture</button>
+              <button type="button" class="btn btn-secondary" onclick="closeCamera()">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <canvas id="photoCanvas" style="display: none;"></canvas>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <p>Contractor does not guarantee or make any agreements, representations, or warranties expressed or implied, including merchantability, with respect to any workmanship, equipment, or material that contractor has supplied pursuant to this contract.</p>
+        <p><strong>I hereby acknowledge the satisfactory completion of the above described work.</strong></p>
+      </div>
+
+      <!-- Signature -->
+      <div class="signature-section">
+        <div class="signature-row">
+          <div class="signature-field">
+            <label>Signature:</label>
+            <div class="signature-pad-container">
+              <canvas id="signaturePad" class="signature-pad"></canvas>
+              <button type="button" class="btn-clear-sig" onclick="clearSignature()">Clear</button>
+            </div>
+          </div>
+          <div class="date-field">
+            <label>Date:</label>
+            <input type="date" name="signatureDate" id="signatureDate">
+          </div>
+        </div>
+      </div>
+
+      <!-- Office Use Only -->
+      <div class="office-section">
+        <div class="office-header">For office use only:</div>
+        <div class="office-fields">
+          <div class="office-row">
+            <div class="office-field">
+              <label>Date Completed:</label>
+              <input type="date" name="dateCompleted" id="dateCompleted">
+            </div>
+            <div class="office-field">
+              <label>Date Invoiced:</label>
+              <input type="date" name="dateInvoiced" id="dateInvoiced">
+            </div>
+            <div class="office-field">
+              <label>Invoice #:</label>
+              <input type="text" name="invoiceNumber" id="invoiceNumber">
+            </div>
+            <div class="office-field">
+              <label>Amount:</label>
+              <input type="number" name="invoiceAmount" id="invoiceAmount" step="0.01">
+            </div>
+          </div>
+          <div class="office-row">
+            <div class="office-field">
+              <label>Date Paid:</label>
+              <input type="date" name="datePaid" id="datePaid">
+            </div>
+            <div class="office-field">
+              <label>Check #:</label>
+              <input type="text" name="checkNumber" id="checkNumber">
+            </div>
+            <div class="office-field">
+              <label>PO:</label>
+              <input type="text" name="poNumber" id="poNumber">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
