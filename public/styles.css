@@ -5,11 +5,12 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 14px;
   background-color: #f5f5f5;
-  padding: 20px;
+  padding: 10px;
   color: #333;
+  -webkit-text-size-adjust: 100%;
 }
 
 .container {
@@ -17,21 +18,33 @@ body {
   margin: 0 auto;
 }
 
+/* Sticky form controls for mobile */
 .form-controls {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #f5f5f5;
+  padding: 10px 0;
 }
 
 .btn {
-  padding: 12px 24px;
+  padding: 14px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn-primary {
@@ -39,7 +52,7 @@ body {
   color: white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:active {
   background-color: #1d4ed8;
 }
 
@@ -48,31 +61,34 @@ body {
   color: white;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, .btn-secondary:active {
   background-color: #4b5563;
 }
 
 .btn-photo {
   background-color: #059669;
   color: white;
+  flex: 1;
+  max-width: 200px;
 }
 
-.btn-photo:hover {
+.btn-photo:hover, .btn-photo:active {
   background-color: #047857;
 }
 
 .btn-capture {
   background-color: #dc2626;
   color: white;
-  padding: 15px 40px;
-  font-size: 16px;
+  padding: 18px 50px;
+  font-size: 18px;
 }
 
 .work-order {
   background-color: white;
   border: 2px solid #1e88e5;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 /* Header */
@@ -82,12 +98,15 @@ body {
   margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 2px solid #1e88e5;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .company-info {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -97,12 +116,12 @@ body {
 }
 
 .logo-icon {
-  font-size: 40px;
+  font-size: 32px;
   color: #1e88e5;
 }
 
 .logo-text {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: bold;
   color: #1e88e5;
 }
@@ -120,10 +139,11 @@ body {
 
 .order-info {
   text-align: right;
+  flex-shrink: 0;
 }
 
 .order-info h1 {
-  font-size: 24px;
+  font-size: 22px;
   color: #333;
   margin-bottom: 10px;
 }
@@ -132,19 +152,21 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .order-fields label {
   margin-right: 10px;
   font-weight: bold;
+  font-size: 13px;
 }
 
 .order-fields input {
-  width: 180px;
-  padding: 4px 8px;
+  width: 160px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 /* Info Sections */
@@ -162,42 +184,50 @@ body {
 .section-header {
   background-color: #1e88e5;
   color: white;
-  padding: 6px 10px;
+  padding: 10px;
   font-weight: bold;
   text-align: center;
+  font-size: 14px;
 }
 
 .section-content {
-  padding: 10px;
+  padding: 12px;
 }
 
 .section-content .field-row {
   display: flex;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .section-content label {
   width: 80px;
   font-weight: bold;
-  font-size: 11px;
+  font-size: 12px;
+  flex-shrink: 0;
 }
 
 .section-content input {
   flex: 1;
-  padding: 4px 6px;
+  min-width: 120px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 11px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 /* Employee Schedule */
 .employee-schedule {
   margin-bottom: 15px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .schedule-table {
   width: 100%;
+  min-width: 500px;
   border-collapse: collapse;
   border: 1px solid #1e88e5;
 }
@@ -205,10 +235,11 @@ body {
 .schedule-table th {
   background-color: #1e88e5;
   color: white;
-  padding: 6px;
+  padding: 10px 6px;
   font-weight: bold;
   text-align: center;
   border: 1px solid #1e88e5;
+  font-size: 12px;
 }
 
 .schedule-table td {
@@ -217,37 +248,38 @@ body {
 }
 
 .schedule-table .date-col {
-  width: 80px;
+  width: 70px;
   text-align: left;
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 .schedule-table .employee-col {
-  width: 150px;
+  width: 120px;
   text-align: left;
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 .week-date-input {
   width: 100%;
-  padding: 4px;
+  padding: 8px 4px;
   border: none;
   text-align: center;
+  font-size: 14px;
 }
 
 .employee-name {
   width: 100%;
-  padding: 4px;
+  padding: 8px 4px;
   border: none;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .hours-input {
   width: 100%;
-  padding: 4px;
+  padding: 8px 4px;
   border: none;
   text-align: center;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* Description Section */
@@ -258,19 +290,21 @@ body {
 .section-header-blue {
   background-color: #1e88e5;
   color: white;
-  padding: 6px 10px;
+  padding: 10px;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .description-section textarea {
   width: 100%;
   border: 1px solid #ccc;
   border-top: none;
-  padding: 10px;
-  font-size: 12px;
-  font-family: Arial, sans-serif;
+  padding: 12px;
+  font-size: 14px;
+  font-family: inherit;
   resize: vertical;
-  min-height: 100px;
+  min-height: 120px;
+  border-radius: 0 0 6px 6px;
 }
 
 /* Materials and Costs */
@@ -283,20 +317,24 @@ body {
 
 .materials-table-container {
   border: 1px solid #1e88e5;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .materials-table {
   width: 100%;
+  min-width: 350px;
   border-collapse: collapse;
 }
 
 .materials-table th {
   background-color: #1e88e5;
   color: white;
-  padding: 6px;
+  padding: 10px 6px;
   font-weight: bold;
   text-align: center;
   border: 1px solid #1e88e5;
+  font-size: 12px;
 }
 
 .materials-table td {
@@ -315,9 +353,9 @@ body {
 
 .material-input, .qty-input, .price-input, .total-input {
   width: 100%;
-  padding: 4px;
+  padding: 10px 4px;
   border: none;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .qty-input, .price-input, .total-input {
@@ -339,20 +377,22 @@ body {
 }
 
 .cost-row label {
-  width: 50%;
-  padding: 4px 8px;
+  width: 55%;
+  padding: 8px;
   font-weight: bold;
   font-size: 11px;
   background-color: #e3f2fd;
   border-right: 1px solid #ccc;
+  display: flex;
+  align-items: center;
 }
 
 .cost-row input {
-  width: 50%;
-  padding: 4px;
+  width: 45%;
+  padding: 8px 4px;
   border: none;
   text-align: right;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .cost-row.total-row label {
@@ -371,11 +411,12 @@ body {
   border: 1px solid #ccc;
   border-top: none;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .photo-preview {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 10px;
   padding: 15px;
   border: 1px solid #ccc;
@@ -387,37 +428,38 @@ body {
   content: 'No photos attached';
   color: #999;
   font-style: italic;
+  grid-column: 1 / -1;
 }
 
 .photo-item {
   position: relative;
-  width: 150px;
 }
 
 .photo-item img {
   width: 100%;
-  height: 100px;
+  height: 80px;
   object-fit: cover;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .photo-item .remove-photo {
   position: absolute;
   top: -8px;
   right: -8px;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   background-color: #dc2626;
   color: white;
-  border: none;
+  border: 2px solid white;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 /* Camera Modal */
@@ -427,121 +469,154 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0,0,0,0.95);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 20px;
 }
 
 .camera-container {
   text-align: center;
+  width: 100%;
+  max-width: 600px;
 }
 
 .camera-container video {
-  max-width: 100%;
-  max-height: 70vh;
+  width: 100%;
+  max-height: 60vh;
   border-radius: 8px;
 }
 
 .camera-controls {
   margin-top: 20px;
   display: flex;
-  gap: 20px;
+  gap: 15px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* Disclaimer */
 .disclaimer {
   border: 1px solid #333;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 15px;
-  font-size: 10px;
-  line-height: 1.4;
+  font-size: 11px;
+  line-height: 1.5;
   text-align: center;
+  border-radius: 6px;
+  background-color: #fafafa;
 }
 
 .disclaimer p {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
-/* Signature Section */
+/* Signature Section - Enhanced for mobile touch */
 .signature-section {
   margin-bottom: 15px;
 }
 
 .signature-row {
   display: flex;
-  gap: 20px;
+  gap: 15px;
   align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 .signature-field {
   flex: 2;
+  min-width: 280px;
 }
 
 .signature-field label, .date-field label {
   display: block;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .signature-pad-container {
   position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .signature-pad {
-  border: 1px solid #333;
-  border-radius: 4px;
+  border: 2px solid #1e88e5;
+  border-radius: 8px;
   width: 100%;
-  height: 80px;
+  height: 120px;
   cursor: crosshair;
-  background-color: #fafafa;
+  background-color: #fefefe;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.signature-instructions {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #999;
+  pointer-events: none;
 }
 
 .btn-clear-sig {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  padding: 2px 8px;
-  font-size: 10px;
-  background-color: #f3f4f6;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  top: 8px;
+  right: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .date-field {
   flex: 1;
+  min-width: 150px;
 }
 
 .date-field input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #333;
-  border-radius: 4px;
+  padding: 12px;
+  border: 2px solid #1e88e5;
+  border-radius: 8px;
+  font-size: 16px;
 }
 
 /* Office Section */
 .office-section {
   border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .office-header {
   background-color: #e3f2fd;
-  padding: 6px 10px;
+  padding: 10px;
   font-weight: bold;
   border-bottom: 1px solid #333;
+  font-size: 14px;
 }
 
 .office-fields {
-  padding: 10px;
+  padding: 12px;
 }
 
 .office-row {
   display: flex;
-  gap: 15px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
 .office-row:last-child {
@@ -550,23 +625,25 @@ body {
 
 .office-field {
   flex: 1;
+  min-width: 140px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .office-field label {
   font-weight: bold;
-  font-size: 11px;
+  font-size: 12px;
   white-space: nowrap;
 }
 
 .office-field input {
   flex: 1;
-  padding: 4px 6px;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 11px;
+  border-radius: 6px;
+  font-size: 14px;
+  min-width: 80px;
 }
 
 /* Print/PDF Styles */
@@ -597,6 +674,10 @@ body {
     display: none !important;
   }
 
+  .signature-instructions {
+    display: none !important;
+  }
+
   .remove-photo {
     display: none !important;
   }
@@ -607,40 +688,281 @@ body {
   }
 }
 
-/* Responsive */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .form-controls {
+    flex-wrap: wrap;
+    padding: 8px 0;
+  }
+
+  .btn {
+    padding: 16px 20px;
+    font-size: 16px;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .work-order {
+    padding: 12px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
   .header {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .company-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-text {
+    font-size: 32px;
+  }
+
+  .company-details {
+    text-align: center;
   }
 
   .order-info {
-    text-align: left;
+    text-align: center;
+    width: 100%;
+  }
+
+  .order-info h1 {
+    font-size: 20px;
+  }
+
+  .order-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .order-fields .field-row {
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .order-fields label {
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .order-fields input {
+    width: 100%;
   }
 
   .info-sections {
     grid-template-columns: 1fr;
   }
 
+  .jobsite-section {
+    border-top: none;
+  }
+
+  .section-content .field-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .section-content label {
+    width: 100%;
+  }
+
+  .section-content input {
+    width: 100%;
+  }
+
+  /* Schedule table scroll hint */
+  .employee-schedule {
+    position: relative;
+  }
+
+  .employee-schedule::after {
+    content: '← Scroll →';
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    padding: 5px;
+  }
+
+  .schedule-table {
+    min-width: 480px;
+  }
+
+  .schedule-table th {
+    padding: 8px 4px;
+    font-size: 11px;
+  }
+
+  /* Materials section mobile */
   .materials-costs-section {
     grid-template-columns: 1fr;
   }
 
   .costs-summary {
     border-left: 1px solid #1e88e5;
+    border-top: none;
   }
 
+  .materials-table-container::after {
+    content: '← Scroll →';
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    padding: 5px;
+    background: #f5f5f5;
+  }
+
+  .cost-row label {
+    font-size: 12px;
+    padding: 10px 8px;
+  }
+
+  .cost-row input {
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+
+  /* Photo section mobile */
+  .photo-controls {
+    flex-direction: row;
+    padding: 12px;
+  }
+
+  .btn-photo {
+    flex: 1;
+    max-width: none;
+    padding: 16px;
+  }
+
+  .photo-preview {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .photo-item img {
+    height: 70px;
+  }
+
+  /* Signature mobile - larger for finger input */
   .signature-row {
     flex-direction: column;
     gap: 15px;
   }
 
+  .signature-field {
+    min-width: 100%;
+  }
+
+  .signature-pad {
+    height: 150px;
+    border-width: 3px;
+  }
+
+  .signature-instructions {
+    font-size: 12px;
+  }
+
+  .date-field {
+    min-width: 100%;
+  }
+
+  /* Office section mobile */
   .office-row {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+  }
+
+  .office-field {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    min-width: 100%;
+  }
+
+  .office-field label {
+    text-align: left;
+  }
+
+  .office-field input {
+    min-width: 100%;
+  }
+
+  /* Disclaimer mobile */
+  .disclaimer {
+    font-size: 10px;
+    padding: 10px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  .btn {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .work-order {
+    padding: 10px;
+  }
+
+  .logo-text {
+    font-size: 28px;
+  }
+
+  .order-info h1 {
+    font-size: 18px;
+  }
+
+  .section-header, .section-header-blue {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .photo-preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .signature-pad {
+    height: 130px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+  }
+
+  .btn {
+    min-height: 48px;
+  }
+
+  .signature-pad {
+    cursor: default;
+  }
+
+  .remove-photo {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
   }
 }
